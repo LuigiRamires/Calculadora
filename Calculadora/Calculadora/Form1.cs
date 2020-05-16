@@ -12,54 +12,41 @@ namespace Calculadora
 {
     public partial class frmCalculadora : Form
     {
+        double v1, v2;
+        Calculadora calculadora = new Calculadora();
+
         public frmCalculadora()
         {
             InitializeComponent();
         }
 
-        private void BtnSomar_Click(object sender, EventArgs e)
+        private void atribuindoValor()
         {
-            double v1, v2;
             v1 = double.Parse(txtValor1.Text);
             v2 = double.Parse(txtValor2.Text);
+        }
 
-            Calculadora calculadora = new Calculadora();
+        private void BtnSomar_Click(object sender, EventArgs e)
+        {
+            atribuindoValor();
             lblResultado.Text = calculadora.Somar(v1, v2).ToString();
-
         }
 
         private void BtnSubtrair_Click(object sender, EventArgs e)
         {
-            double v1, v2;
-            v1 = double.Parse(txtValor1.Text);
-            v2 = double.Parse(txtValor2.Text);
-            Calculadora calculadora = new Calculadora();
+            atribuindoValor();
             lblResultado.Text = calculadora.Subtrair(v1, v2).ToString();
         }
 
         private void BtnDividir_Click(object sender, EventArgs e)
         {
-            double v1, v2;
-            v1 = double.Parse(txtValor1.Text);
-            v2 = double.Parse(txtValor2.Text);
-
-            if (v2 != 0)
-            {
-                Calculadora calculadora = new Calculadora();
-                lblResultado.Text = calculadora.dividir(v1, v2).ToString();
-            }
-            else
-            {
-                MessageBox.Show("Não se pode dividir por 0", "Atenção");
-            }
+            atribuindoValor();
+            lblResultado.Text = calculadora.dividir(v1, v2).ToString();
         }
 
         private void BtnMultiplicar_Click(object sender, EventArgs e)
         {
-            double v1, v2;
-            v1 = double.Parse(txtValor1.Text);
-            v2 = double.Parse(txtValor2.Text);
-            Calculadora calculadora = new Calculadora();
+            atribuindoValor();
             lblResultado.Text = calculadora.multiplicar(v1, v2).ToString();
         }
     }
