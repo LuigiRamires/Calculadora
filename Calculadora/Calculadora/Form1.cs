@@ -44,6 +44,24 @@ namespace Calculadora
             lblResultado.Text = calculadora.dividir(v1, v2).ToString();
         }
 
+        private void TxtValor1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && !(e.KeyChar == (char)Keys.Back) && !(e.KeyChar == (char)Keys.Space))
+            {
+                e.Handled = true;
+                MessageBox.Show("Este Campo aceita apenas números!", "ATENÇÃO!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void TxtValor2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && !(e.KeyChar == (char)Keys.Back) && !(e.KeyChar == (char)Keys.Space))
+            {
+                e.Handled = true;
+                MessageBox.Show("Este Campo aceita apenas números!", "ATENÇÃO!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
         private void BtnMultiplicar_Click(object sender, EventArgs e)
         {
             atribuindoValor();

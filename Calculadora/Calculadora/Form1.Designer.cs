@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCalculadora));
             this.lblValor01 = new System.Windows.Forms.Label();
             this.lblValor02 = new System.Windows.Forms.Label();
             this.txtValor1 = new System.Windows.Forms.TextBox();
@@ -37,13 +38,15 @@
             this.btnMultiplicar = new System.Windows.Forms.Button();
             this.btnDividir = new System.Windows.Forms.Button();
             this.lblResultado = new System.Windows.Forms.Label();
+            this.lblCredits = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblValor01
             // 
             this.lblValor01.AutoSize = true;
             this.lblValor01.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValor01.Location = new System.Drawing.Point(36, 48);
+            this.lblValor01.ForeColor = System.Drawing.Color.White;
+            this.lblValor01.Location = new System.Drawing.Point(61, 49);
             this.lblValor01.Name = "lblValor01";
             this.lblValor01.Size = new System.Drawing.Size(70, 20);
             this.lblValor01.TabIndex = 0;
@@ -53,7 +56,8 @@
             // 
             this.lblValor02.AutoSize = true;
             this.lblValor02.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.lblValor02.Location = new System.Drawing.Point(36, 73);
+            this.lblValor02.ForeColor = System.Drawing.Color.White;
+            this.lblValor02.Location = new System.Drawing.Point(61, 74);
             this.lblValor02.Name = "lblValor02";
             this.lblValor02.Size = new System.Drawing.Size(70, 20);
             this.lblValor02.TabIndex = 1;
@@ -61,32 +65,39 @@
             // 
             // txtValor1
             // 
-            this.txtValor1.Location = new System.Drawing.Point(112, 48);
+            this.txtValor1.Location = new System.Drawing.Point(137, 49);
             this.txtValor1.Name = "txtValor1";
             this.txtValor1.Size = new System.Drawing.Size(100, 20);
             this.txtValor1.TabIndex = 2;
+            this.txtValor1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtValor1_KeyPress);
             // 
             // txtValor2
             // 
-            this.txtValor2.Location = new System.Drawing.Point(112, 74);
+            this.txtValor2.Location = new System.Drawing.Point(137, 75);
             this.txtValor2.Name = "txtValor2";
             this.txtValor2.Size = new System.Drawing.Size(100, 20);
             this.txtValor2.TabIndex = 3;
+            this.txtValor2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtValor2_KeyPress);
             // 
             // btnSomar
             // 
-            this.btnSomar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSomar.BackColor = System.Drawing.Color.Coral;
+            this.btnSomar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSomar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnSomar.ForeColor = System.Drawing.Color.White;
             this.btnSomar.Location = new System.Drawing.Point(40, 113);
             this.btnSomar.Name = "btnSomar";
             this.btnSomar.Size = new System.Drawing.Size(50, 29);
             this.btnSomar.TabIndex = 4;
             this.btnSomar.Text = "+";
-            this.btnSomar.UseVisualStyleBackColor = true;
+            this.btnSomar.UseVisualStyleBackColor = false;
             this.btnSomar.Click += new System.EventHandler(this.BtnSomar_Click);
             // 
             // btnSubtrair
             // 
-            this.btnSubtrair.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubtrair.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSubtrair.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnSubtrair.ForeColor = System.Drawing.Color.White;
             this.btnSubtrair.Location = new System.Drawing.Point(96, 113);
             this.btnSubtrair.Name = "btnSubtrair";
             this.btnSubtrair.Size = new System.Drawing.Size(50, 29);
@@ -97,7 +108,9 @@
             // 
             // btnMultiplicar
             // 
-            this.btnMultiplicar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMultiplicar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnMultiplicar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnMultiplicar.ForeColor = System.Drawing.Color.White;
             this.btnMultiplicar.Location = new System.Drawing.Point(152, 113);
             this.btnMultiplicar.Name = "btnMultiplicar";
             this.btnMultiplicar.Size = new System.Drawing.Size(50, 29);
@@ -108,7 +121,9 @@
             // 
             // btnDividir
             // 
-            this.btnDividir.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDividir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDividir.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnDividir.ForeColor = System.Drawing.Color.White;
             this.btnDividir.Location = new System.Drawing.Point(208, 113);
             this.btnDividir.Name = "btnDividir";
             this.btnDividir.Size = new System.Drawing.Size(50, 29);
@@ -120,18 +135,32 @@
             // lblResultado
             // 
             this.lblResultado.AutoSize = true;
-            this.lblResultado.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResultado.Location = new System.Drawing.Point(108, 17);
+            this.lblResultado.BackColor = System.Drawing.Color.Coral;
+            this.lblResultado.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResultado.ForeColor = System.Drawing.Color.White;
+            this.lblResultado.Location = new System.Drawing.Point(145, 16);
             this.lblResultado.Name = "lblResultado";
-            this.lblResultado.Size = new System.Drawing.Size(13, 20);
+            this.lblResultado.Size = new System.Drawing.Size(0, 18);
             this.lblResultado.TabIndex = 8;
-            this.lblResultado.Text = " ";
+            // 
+            // lblCredits
+            // 
+            this.lblCredits.AutoSize = true;
+            this.lblCredits.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCredits.ForeColor = System.Drawing.Color.White;
+            this.lblCredits.Location = new System.Drawing.Point(62, 159);
+            this.lblCredits.Name = "lblCredits";
+            this.lblCredits.Size = new System.Drawing.Size(179, 17);
+            this.lblCredits.TabIndex = 9;
+            this.lblCredits.Text = "Calculadora by Luigi Oliveira";
             // 
             // frmCalculadora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Coral;
             this.ClientSize = new System.Drawing.Size(300, 185);
+            this.Controls.Add(this.lblCredits);
             this.Controls.Add(this.lblResultado);
             this.Controls.Add(this.btnDividir);
             this.Controls.Add(this.btnMultiplicar);
@@ -141,6 +170,7 @@
             this.Controls.Add(this.txtValor1);
             this.Controls.Add(this.lblValor02);
             this.Controls.Add(this.lblValor01);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCalculadora";
             this.Text = "Calculadora";
             this.ResumeLayout(false);
@@ -159,6 +189,7 @@
         private System.Windows.Forms.Button btnMultiplicar;
         private System.Windows.Forms.Button btnDividir;
         private System.Windows.Forms.Label lblResultado;
+        private System.Windows.Forms.Label lblCredits;
     }
 }
 
